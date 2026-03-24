@@ -5,4 +5,4 @@
 </div>
 Homepage for the paper "WildWorld: A Large-Scale Dataset for Dynamic World Modeling with Actions and Explicit State toward Generative ARPG"
 
-https://github.com/ShandaAI/WildWorld
+https://shandaai.github.io/wildworld-project/
