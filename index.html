@@ -1,520 +1,634 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta property="og:title" content="WildWorld" />
+  <meta property="og:description" content="A Large-Scale Dataset for Dynamic World Modeling with Actions and Explicit State toward Generative ARPG" />
+  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/teaser.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="600" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <title>WildWorld</title>
+  <link rel="icon" type="image/x-icon" href="statichttps://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/favicon.ico">
+  <!-- System font stack, no external font loading -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <script defer src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/js/fontawesome.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
 
+    html, body {
+      margin: 0; padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #000;
+    }
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+    /* ============================================
+       FULLPAGE CONTAINER
+       ============================================ */
+    #fullpage {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .fp-section {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ============================================
+       PAGE NAV DOTS
+       ============================================ */
+    #page-nav {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      padding: 0;
+    }
+    .nav-dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+    /* For white sections, dots need to be dark */
+    .nav-dot.dark {
+      background: rgba(0,0,0,0.15);
+    }
+    .nav-dot.dark.active {
+      background: #333;
+    }
+
+    /* ============================================
+       SECTION 0: HERO TITLE (black)
+       ============================================ */
+    .sec-hero {
+      background: #1a1a1a;
+      color: #fff;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .sec-hero .publication-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-style: normal;
+      text-align: center;
+      max-width: 1100px;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+      opacity: 0; transform: translateY(40px);
+    }
+    .sec-hero .publication-title .t-main { color: #fff; }
+    .sec-hero .publication-title .t-red { color: #c0392b; }
+    .sec-hero .publication-title .t-blue { color: #2980b9; }
+    .sec-hero .publication-title .t-orange { color: #d35400; }
+
+    .sec-hero .publication-authors {
+      text-align: center;
+      max-width: 56rem;
+      font-size: 1.05rem;
+      color: #ccc;
+      opacity: 0; transform: translateY(30px);
+    }
+    .sec-hero .author-block { display: inline-block; margin: 0 0.3rem; }
+    .sec-hero .affiliations { margin-top: 0.75rem; font-size: 0.95rem; color: #999; }
+    .sec-hero .corresponding { margin-top: 0.5rem; font-size: 0.85rem; color: #888; }
+
+    .sec-hero .publication-links {
+      margin-top: 1.5rem;
+      display: flex; gap: 0.75rem;
+      justify-content: center; flex-wrap: wrap;
+      opacity: 0; transform: translateY(20px);
+    }
+
+    .pub-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.25rem; border-radius: 999px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: #fff; background: rgba(255,255,255,0.08);
+    }
+    .pub-btn:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+    .pub-btn.disabled { opacity: 0.4; pointer-events: none; cursor: default; }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      text-align: center; color: #555; font-size: 0.85rem;
+      opacity: 0;
+      animation: none;
+    }
+    .scroll-hint i { display: block; margin-top: 0.4rem; font-size: 1.2rem; }
+
+    @keyframes pulse-hint {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Hero animation states */
+    .sec-hero.phase-0 .publication-title { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .sec-hero.phase-0 .publication-authors { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s; }
+    .sec-hero.phase-0 .publication-links { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+    .sec-hero.phase-0 .scroll-hint { animation: pulse-hint 2s ease-in-out infinite 1.2s; }
+
+    /* ============================================
+       SECTION 1: VIDEO (black)
+       ============================================ */
+    .sec-video {
+      background: #eeeeee;
+      color: #333;
+      flex-direction: column;
+    }
+
+    .sec-video .video-wrapper {
+      width: 90%; max-width: 1200px;
+      aspect-ratio: 16/9;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 0 80px rgba(50,116,216,0.12);
+      opacity: 0; transform: scale(0.92);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sec-video video,
+    .sec-video iframe {
+      width: 100%; height: 100%; display: block;
+      border: none; border-radius: 16px;
+    }
+
+    .sec-video .video-hint {
+      margin-top: 1.25rem; font-size: 0.95rem; color: #999;
+      opacity: 0; transform: translateY(12px);
+      transition: all 0.8s ease 0.4s;
+    }
+
+    .sec-video.phase-0 .video-wrapper { opacity: 1; transform: scale(1); }
+    .sec-video.phase-0 .video-hint { opacity: 1; transform: translateY(0); }
+
+    /* ============================================
+       CONTENT SECTIONS (white)
+       ============================================ */
+    .sec-content {
+      background: #eeeeee;
+      color: #333;
+      flex-direction: column;
+      padding: 4rem 2rem;
+    }
+
+    .sec-content .section-inner {
+      max-width: 960px;
+      width: 100%;
+      overflow-y: auto;
+      max-height: 90vh;
+      padding-right: 0.5rem;
+      /* hide scrollbar but allow scroll */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .sec-content .section-inner::-webkit-scrollbar { display: none; }
+
+    .section-title {
+      font-size: 2rem; font-weight: 700;
+      margin-bottom: 1.5rem; text-align: center; color: #111;
+      opacity: 0; transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .section-text {
+      font-size: 1.05rem; line-height: 1.8; color: #555; margin-bottom: 2rem;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+    }
+    .section-text b { color: #222; }
+    .section-text ul { margin-top: 0.75rem; margin-left: 1.25rem; }
+    .section-text li { margin-bottom: 0.5rem; }
+
+    .figure-container {
+      text-align: center;
+      opacity: 0; transform: translateY(40px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+    }
+    .figure-container img {
+      width: 100%; height: auto; border-radius: 12px;
+    }
+
+    .table-caption {
+      color: #999; font-size: 0.9rem; margin-top: 0.75rem; text-align: center;
+    }
+
+    .figure-group { margin-top: 2rem; }
+    .figure-group + .figure-group { margin-top: 2.5rem; }
+
+    /* Second figure has extra delay */
+    .figure-container.fig-2 {
+      transition-delay: 0.4s;
+    }
+
+    /* Activated state */
+    .sec-content.phase-0 .section-title { opacity: 1; transform: translateY(0); }
+    .sec-content.phase-0 .section-text { opacity: 1; transform: translateY(0); }
+    .sec-content.phase-0 .figure-container { opacity: 1; transform: translateY(0); }
+
+    /* ============================================
+       BIBTEX section
+       ============================================ */
+    .sec-content pre {
+      background: #f5f5f5 !important;
+      border-radius: 8px !important;
+      padding: 1.25rem !important;
+      font-size: 0.85rem !important;
+      color: #333; overflow-x: auto;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+    .sec-content.phase-0 pre { opacity: 1; transform: translateY(0); }
+
+    /* ============================================
+       FOOTER (inside last section)
+       ============================================ */
+    .site-footer {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid #eee; text-align: center;
+      opacity: 0; transition: all 0.6s ease 0.3s;
+    }
+    .site-footer p { color: #999; font-size: 0.85rem; }
+    .site-footer a { color: #3274D8; }
+    .sec-content.phase-0 .site-footer { opacity: 1; }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media screen and (max-width: 768px) {
+      .sec-hero .publication-title { font-size: 1.8rem; }
+      .sec-video .video-wrapper { width: 95%; }
+      .sec-content { padding: 2.5rem 1.25rem; }
+      .section-title { font-size: 1.5rem; }
+      #page-nav { right: 0.75rem; }
+    }
+  </style>
 </head>
+
 <body>
 
+  <!-- Page Navigation Dots -->
+  <nav id="page-nav"></nav>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+  <!-- Fullpage Container -->
+  <div id="fullpage">
 
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
+    <!-- 0: Hero Title -->
+    <section class="fp-section sec-hero" data-bg="dark">
+      <h1 class="publication-title">
+        <span class="t-main" style="font-size: 4rem;">WildWorld</span><br>
+        <span class="t-main">A Large-Scale Dataset for Dynamic World Modeling<br>
+        with </span><span class="t-red">Actions</span><span class="t-main"> and </span><span class="t-blue">Explicit State</span><span class="t-main"> toward </span><span class="t-orange">Generative ARPG</span>
+      </h1>
+      <div class="publication-authors">
+        <span class="author-block">Zhen Li<sup>&nbsp;1,2,4,*</sup></span>,
+        <span class="author-block">Zian Meng<sup>&nbsp;1,3,*</sup></span>,
+        <span class="author-block">Shuwei Shi<sup>&nbsp;1</sup></span>,
+        <span class="author-block">Wenshuo Peng<sup>&nbsp;5</sup></span>,<br>
+        <span class="author-block">Yuwei Wu<sup>&nbsp;2,4,&#x1F4E7;</sup></span>,
+        <span class="author-block">Bo Zheng<sup>&nbsp;1</sup></span>,
+        <span class="author-block">Chuanhao Li<sup>&nbsp;1,&#x1F4E7;</sup></span>,
+        <span class="author-block">Kaipeng Zhang<sup>&nbsp;1,&#x1F4E7;</sup></span>
+        <div class="affiliations">
+          <sup>1</sup>Alaya Studio, Shanda AI Research Tokyo,
+          <sup>2</sup>Beijing Institute of Technology,
+          <sup>3</sup>Shanghai Innovation Institute<br>
+          <sup>4</sup>Shenzhen MSU-BIT University,
+          <sup>5</sup>Tsinghua University
+        </div>
+        <div class="corresponding">
+          &#x1F4E7; Corresponding authors: wuyuwei@bit.edu.cn; chuanhao.li@shanda.com; kaipeng.zhang@shanda.com
+        </div>
       </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
+      <div class="publication-links">
+        <a href="https://arxiv.org/abs/2503.18689" target="_blank" class="pub-btn">
+          <i class="ai ai-arxiv"></i> Paper
         </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
+        <a href="https://github.com/ShandaAI/WildWorld" target="_blank" class="pub-btn">
+          <i class="fab fa-github"></i> Code
         </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
+        <span class="pub-btn disabled">&#129303; Dataset (Coming Soon)</span>
       </div>
-    </div>
-  </div>
+      <div class="scroll-hint">
+        Scroll to explore
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+    <!-- 1: Video -->
+    <section class="fp-section sec-video" data-bg="light">
+      <div class="video-wrapper">
+        <video id="demo-video" controls playsinline preload="auto"></video>
+      </div>
+      <div class="video-hint">&#x1F50A; Watch the WildWorld introduction video &nbsp;|&nbsp; <a href="https://www.youtube.com/watch?v=9vcSg553r2g" target="_blank" style="color:#3274D8; text-decoration:none;">Watch on YouTube &rarr;</a></div>
+    </section>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
+    <!-- 2: Introduction -->
+    <section class="fp-section sec-content" data-bg="light">
+      <div class="section-inner">
+        <h2 class="section-title">Introduction</h2>
+        <div class="section-text">
+          <p>Learning a predictive world model requires inferring latent states and modeling their action-conditioned transitions. However, existing datasets typically lack diverse action spaces, and actions are directly tied to visual observations rather than mediated by underlying states.</p>
+          <p>In many scenarios, actions manifest through <b>implicit state transitions</b> rather than explicit visual changes. For example, the action "shoot" affects internal state variables like "remaining ammunition", which cannot be reliably inferred from pixels alone, yet crucially determines future visual outcomes.</p>
+          <p><b>WildWorld</b> addresses this by providing a large-scale action-conditioned world modeling dataset with <b>explicit state annotations</b>, automatically collected from <em>Monster Hunter: Wilds</em> &mdash; a photorealistic AAA action RPG. It contains RGB frames with aligned depth maps, camera poses, skeleton, and action / state ground truth. We provide both fine-grained action-level captions and sample-level captions, making the dataset applicable to various experimental settings.</p>
+        </div>
+        <div class="figure-container">
+          <img src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/teaser.png" alt="WildWorld multi-modal annotations">
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+    <!-- 3: Dataset Construction -->
+    <section class="fp-section sec-content" data-bg="light">
+      <div class="section-inner">
+        <h2 class="section-title">Dataset Construction</h2>
+        <div class="section-text">
+          <p>We design a fully automated pipeline with four stages: (1) <b>Automated Game Play</b> via programmatic UI navigation and behavior-tree-driven AI; (2) <b>Multi-Stream Recording</b> with timestamp-embedded frame-wise synchronization; (3) <b>Data Processing &amp; Filtering</b> that removes short clips, shot-cuts, stuttering, extreme luminance, and occlusions; (4) <b>Hierarchical Captioning</b> with action-level captions grounded in state ground truth and sample-level summaries via LLM.</p>
+        </div>
+        <div class="figure-container">
+          <img src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/framework-arxiv.png" alt="WildWorld dataset curation pipeline">
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+    </section>
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
+    <!-- 4: Dataset Overview -->
+    <section class="fp-section sec-content" data-bg="light">
+      <div class="section-inner">
+        <h2 class="section-title">Dataset Overview</h2>
+        <div class="section-text">
+          <p>WildWorld contains <b>108M+ annotated frames</b> with <b>450+ action types</b> across <b>29 monster species</b>, 4 player characters, 4 weapon types, and 5 distinct open-world stages. The dataset covers 66% combat and 34% traversal scenarios with a natural long-tail action distribution.</p>
+        </div>
+        <div class="figure-container">
+          <img src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/dataset_overview_figure.png" alt="Dataset statistics overview">
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
+    </section>
 
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+    <!-- 5: WildBench -->
+    <section class="fp-section sec-content" data-bg="light">
+      <div class="section-inner">
+        <h2 class="section-title">WildBench</h2>
+        <div class="section-text">
+          <p>We propose <b>WildBench</b>, a comprehensive benchmark with 200 curated test samples evaluating interactive world models from four perspectives:</p>
+          <ul>
+            <li><b>Video Quality</b> &mdash; Motion Smoothness, Dynamic Degree, Aesthetic Quality, Image Quality (VBench).</li>
+            <li><b>Camera Control</b> &mdash; Absolute Trajectory Error (ATE) and Relative Pose Error (RPE) via SfM.</li>
+            <li><b>Action Following</b> &mdash; Whether generated videos faithfully reflect input actions.</li>
+            <li><b>State Alignment</b> &mdash; Alignment between generated and ground truth state evolution via keypoint tracking.</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
+    </section>
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+    <!-- 6: Experiments -->
+    <section class="fp-section sec-content" data-bg="light" style="height: auto; min-height: 100vh;">
+      <div class="section-inner">
+        <h2 class="section-title">Experiments</h2>
+        <div class="section-text">
+          <p>We evaluate several interactive video generation approaches on WildWorld under different conditioning settings:</p>
+          <ul>
+            <li><b>Baseline</b> &mdash; Wan2.2-TI2V-5B, text+image-to-video generation without explicit control signals.</li>
+            <li><b>CamCtrl</b> &mdash; Camera-conditioned generation using ground-truth per-frame camera poses.</li>
+            <li><b>SkelCtrl</b> &mdash; Skeleton-conditioned generation taking rendered skeleton pose videos.</li>
+            <li><b>StateCtrl</b> &mdash; State-conditioned generation using camera, skeletons, and world states jointly.</li>
+            <li><b>StateCtrl-AR</b> &mdash; Autoregressive variant predicting states from the first frame only.</li>
+          </ul>
+        </div>
+        <div class="figure-container figure-group">
+          <img src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/table1.png" alt="Quantitative results">
+          <p class="table-caption">Quantitative comparison of different approaches trained on WildWorld and evaluated on WildBench.</p>
+        </div>
+        <div class="figure-container figure-group fig-2">
+          <img src="https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/images/qualitative_comparison_v2.png" alt="Qualitative comparison">
+          <p class="table-caption">Qualitative comparison of different approaches trained on WildWorld and evaluated on WildBench.</p>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+    <!-- 7: BibTeX + Footer -->
+    <section class="fp-section sec-content" data-bg="light" style="min-height: auto; height: auto;">
+      <div class="section-inner">
+        <h2 class="section-title">BibTeX</h2>
+        <pre><code>tbd</code></pre>
+        <footer class="site-footer">
+          <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.</p>
+        </footer>
+      </div>
+    </section>
 
-    <!-- End of Statcounter Code -->
+  </div><!-- end #fullpage -->
 
-  </body>
-  </html>
+  <script>
+  /* ---- HLS Video Setup ---- */
+  (function() {
+    var video = document.getElementById('demo-video');
+    var hlsSrc = 'https://cdn.jsdelivr.net/gh/ShandaAI/wildworld-project@0.1.0/static/videos/demo.m3u8';
+    var mp4Fallback = 'static/videos/demo.mp4';
+
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(hlsSrc);
+      hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = hlsSrc;
+    } else {
+      video.src = mp4Fallback;
+    }
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var container = document.getElementById('fullpage');
+    var sections  = document.querySelectorAll('.fp-section');
+    var total     = sections.length;
+    var current   = 0;
+    var isAnimating = false;
+    var LOCK_MS   = 800;
+
+    /* ---- Build nav dots ---- */
+    var nav = document.getElementById('page-nav');
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'nav-dot';
+      dot.setAttribute('data-index', i);
+      dot.addEventListener('click', function() {
+        goTo(parseInt(this.getAttribute('data-index')));
+      });
+      nav.appendChild(dot);
+    }
+    var dots = nav.querySelectorAll('.nav-dot');
+
+    function updateDots() {
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active', 'dark');
+        if (i === current) dots[i].classList.add('active');
+        if (sections[current].getAttribute('data-bg') === 'light') {
+          dots[i].classList.add('dark');
+        }
+      }
+    }
+
+    function activateSection(index) {
+      sections[index].classList.add('phase-0');
+
+      var inner = sections[index].querySelector('.section-inner');
+      if (inner) inner.scrollTop = 0;
+    }
+
+    function deactivateSection(index) {
+      sections[index].classList.remove('phase-0');
+    }
+
+    function goTo(index) {
+      if (index < 0 || index >= total || index === current || isAnimating) return;
+
+      isAnimating = true;
+
+      deactivateSection(current);
+
+      current = index;
+
+      container.style.transform = 'translateY(' + (-current * 100) + 'vh)';
+
+      updateDots();
+
+      setTimeout(function() {
+        activateSection(current);
+      }, 300);
+
+      setTimeout(function() {
+        isAnimating = false;
+      }, LOCK_MS);
+    }
+
+    function canScrollInner(section, direction) {
+      var inner = section.querySelector('.section-inner');
+      if (!inner) return false;
+      var scrollable = inner.scrollHeight > inner.clientHeight + 2;
+      if (!scrollable) return false;
+      if (direction > 0) {
+        return inner.scrollTop + inner.clientHeight < inner.scrollHeight - 2;
+      } else {
+        return inner.scrollTop > 2;
+      }
+    }
+
+    var wheelAccumulator = 0;
+    var wheelThreshold = 50;
+    var wheelTimer = null;
+
+    window.addEventListener('wheel', function(e) {
+      e.preventDefault();
+
+      if (isAnimating) return;
+
+      var section = sections[current];
+      var direction = e.deltaY > 0 ? 1 : -1;
+
+      if (canScrollInner(section, direction)) {
+        var inner = section.querySelector('.section-inner');
+        inner.scrollTop += e.deltaY;
+        return;
+      }
+
+      wheelAccumulator += Math.abs(e.deltaY);
+
+      clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(function() { wheelAccumulator = 0; }, 200);
+
+      if (wheelAccumulator >= wheelThreshold) {
+        wheelAccumulator = 0;
+        goTo(current + direction);
+      }
+    }, { passive: false });
+
+    /* ---- Touch handling ---- */
+    var touchStartY = 0;
+    var touchMoved = false;
+
+    window.addEventListener('touchstart', function(e) {
+      touchStartY = e.touches[0].clientY;
+      touchMoved = false;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', function(e) {
+      if (isAnimating) return;
+      var deltaY = touchStartY - e.touches[0].clientY;
+      var direction = deltaY > 0 ? 1 : -1;
+
+      var section = sections[current];
+      if (canScrollInner(section, direction)) {
+        return;
+      }
+
+      if (!touchMoved && Math.abs(deltaY) > 50) {
+        touchMoved = true;
+        goTo(current + direction);
+      }
+    }, { passive: true });
+
+    /* ---- Keyboard handling ---- */
+    window.addEventListener('keydown', function(e) {
+      if (isAnimating) return;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        var section = sections[current];
+        if (canScrollInner(section, 1)) {
+          var inner = section.querySelector('.section-inner');
+          inner.scrollTop += 120;
+        } else {
+          goTo(current + 1);
+        }
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        var section2 = sections[current];
+        if (canScrollInner(section2, -1)) {
+          var inner2 = section2.querySelector('.section-inner');
+          inner2.scrollTop -= 120;
+        } else {
+          goTo(current - 1);
+        }
+      }
+    });
+
+    /* ---- Init ---- */
+    updateDots();
+    setTimeout(function() {
+      activateSection(0);
+    }, 100);
+
+  })();
+  </script>
+
+</body>
+</html>
