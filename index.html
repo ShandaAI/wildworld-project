@@ -29,9 +29,6 @@
       background: #000;
     }
 
-    /* ============================================
-       FULLPAGE CONTAINER
-       ============================================ */
     #fullpage {
       position: fixed;
       top: 0; left: 0;
@@ -49,9 +46,6 @@
       justify-content: center;
     }
 
-    /* ============================================
-       PAGE NAV DOTS
-       ============================================ */
     #page-nav {
       position: fixed;
       right: 1.5rem;
@@ -75,7 +69,6 @@
       background: #fff;
       transform: scale(1.3);
     }
-    /* For white sections, dots need to be dark */
     .nav-dot.dark {
       background: rgba(0,0,0,0.15);
     }
@@ -83,9 +76,6 @@
       background: #333;
     }
 
-    /* ============================================
-       SECTION 0: HERO TITLE (black)
-       ============================================ */
     .sec-hero {
       background: #1a1a1a;
       color: #fff;
@@ -153,15 +143,11 @@
       50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
     }
 
-    /* Hero animation states */
     .sec-hero.phase-0 .publication-title { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .sec-hero.phase-0 .publication-authors { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s; }
     .sec-hero.phase-0 .publication-links { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
     .sec-hero.phase-0 .scroll-hint { animation: pulse-hint 2s ease-in-out infinite 1.2s; }
 
-    /* ============================================
-       SECTION 1: VIDEO (black)
-       ============================================ */
     .sec-video {
       background: #eeeeee;
       color: #333;
@@ -191,9 +177,6 @@
     .sec-video.phase-0 .video-wrapper { opacity: 1; transform: scale(1); }
     .sec-video.phase-0 .video-hint { opacity: 1; transform: translateY(0); }
 
-    /* ============================================
-       CONTENT SECTIONS (white)
-       ============================================ */
     .sec-content {
       background: #eeeeee;
       color: #333;
@@ -207,7 +190,6 @@
       overflow-y: auto;
       max-height: 90vh;
       padding-right: 0.5rem;
-      /* hide scrollbar but allow scroll */
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -245,19 +227,14 @@
     .figure-group { margin-top: 2rem; }
     .figure-group + .figure-group { margin-top: 2.5rem; }
 
-    /* Second figure has extra delay */
     .figure-container.fig-2 {
       transition-delay: 0.4s;
     }
 
-    /* Activated state */
     .sec-content.phase-0 .section-title { opacity: 1; transform: translateY(0); }
     .sec-content.phase-0 .section-text { opacity: 1; transform: translateY(0); }
     .sec-content.phase-0 .figure-container { opacity: 1; transform: translateY(0); }
 
-    /* ============================================
-       BIBTEX section
-       ============================================ */
     .sec-content pre {
       background: #f5f5f5 !important;
       border-radius: 8px !important;
@@ -269,9 +246,6 @@
     }
     .sec-content.phase-0 pre { opacity: 1; transform: translateY(0); }
 
-    /* ============================================
-       FOOTER (inside last section)
-       ============================================ */
     .site-footer {
       margin-top: 2rem; padding-top: 1.5rem;
       border-top: 1px solid #eee; text-align: center;
@@ -281,9 +255,6 @@
     .site-footer a { color: #3274D8; }
     .sec-content.phase-0 .site-footer { opacity: 1; }
 
-    /* ============================================
-       RESPONSIVE
-       ============================================ */
     @media screen and (max-width: 768px) {
       .sec-hero .publication-title { font-size: 1.8rem; }
       .sec-video .video-wrapper { width: 95%; }
@@ -296,13 +267,10 @@
 
 <body>
 
-  <!-- Page Navigation Dots -->
   <nav id="page-nav"></nav>
 
-  <!-- Fullpage Container -->
   <div id="fullpage">
 
-    <!-- 0: Hero Title -->
     <section class="fp-section sec-hero" data-bg="dark">
       <h1 class="publication-title">
         <span class="t-main" style="font-size: 4rem;">WildWorld</span><br>
@@ -330,7 +298,7 @@
         </div>
       </div>
       <div class="publication-links">
-        <a href="https://arxiv.org/abs/2503.18689" target="_blank" class="pub-btn">
+        <a href="https://arxiv.org/abs/2603.23497" target="_blank" class="pub-btn">
           <i class="ai ai-arxiv"></i> Paper
         </a>
         <a href="https://github.com/ShandaAI/WildWorld" target="_blank" class="pub-btn">
@@ -344,7 +312,6 @@
       </div>
     </section>
 
-    <!-- 1: Video -->
     <section class="fp-section sec-video" data-bg="light">
       <div class="video-wrapper">
         <video id="demo-video" controls playsinline preload="auto"></video>
@@ -352,7 +319,6 @@
       <div class="video-hint">&#x1F50A; Watch the WildWorld introduction video &nbsp;|&nbsp; <a href="https://www.youtube.com/watch?v=9vcSg553r2g" target="_blank" style="color:#3274D8; text-decoration:none;">Watch on YouTube &rarr;</a></div>
     </section>
 
-    <!-- 2: Introduction -->
     <section class="fp-section sec-content" data-bg="light">
       <div class="section-inner">
         <h2 class="section-title">Introduction</h2>
@@ -367,7 +333,6 @@
       </div>
     </section>
 
-    <!-- 3: Dataset Construction -->
     <section class="fp-section sec-content" data-bg="light">
       <div class="section-inner">
         <h2 class="section-title">Dataset Construction</h2>
@@ -380,7 +345,6 @@
       </div>
     </section>
 
-    <!-- 4: Dataset Overview -->
     <section class="fp-section sec-content" data-bg="light">
       <div class="section-inner">
         <h2 class="section-title">Dataset Overview</h2>
@@ -393,7 +357,6 @@
       </div>
     </section>
 
-    <!-- 5: WildBench -->
     <section class="fp-section sec-content" data-bg="light">
       <div class="section-inner">
         <h2 class="section-title">WildBench</h2>
@@ -409,7 +372,6 @@
       </div>
     </section>
 
-    <!-- 6: Experiments -->
     <section class="fp-section sec-content" data-bg="light" style="height: auto; min-height: 100vh;">
       <div class="section-inner">
         <h2 class="section-title">Experiments</h2>
@@ -433,12 +395,19 @@
         </div>
       </div>
     </section>
-
-    <!-- 7: BibTeX + Footer -->
+    
     <section class="fp-section sec-content" data-bg="light" style="min-height: auto; height: auto;">
       <div class="section-inner">
         <h2 class="section-title">BibTeX</h2>
-        <pre><code>tbd</code></pre>
+        <pre><code>@misc{li2026wildworldlargescaledatasetdynamic,
+      title={WildWorld: A Large-Scale Dataset for Dynamic World Modeling with Actions and Explicit State toward Generative ARPG}, 
+      author={Zhen Li and Zian Meng and Shuwei Shi and Wenshuo Peng and Yuwei Wu and Bo Zheng and Chuanhao Li and Kaipeng Zhang},
+      year={2026},
+      eprint={2603.23497},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2603.23497}, 
+}</code></pre>
         <footer class="site-footer">
           <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.</p>
         </footer>
@@ -475,7 +444,6 @@
     var isAnimating = false;
     var LOCK_MS   = 800;
 
-    /* ---- Build nav dots ---- */
     var nav = document.getElementById('page-nav');
     for (var i = 0; i < total; i++) {
       var dot = document.createElement('button');
@@ -572,7 +540,6 @@
       }
     }, { passive: false });
 
-    /* ---- Touch handling ---- */
     var touchStartY = 0;
     var touchMoved = false;
 
@@ -597,7 +564,6 @@
       }
     }, { passive: true });
 
-    /* ---- Keyboard handling ---- */
     window.addEventListener('keydown', function(e) {
       if (isAnimating) return;
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
@@ -621,7 +587,6 @@
       }
     });
 
-    /* ---- Init ---- */
     updateDots();
     setTimeout(function() {
       activateSection(0);
